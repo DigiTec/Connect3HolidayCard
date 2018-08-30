@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <title>Origame Studios - Configure Your Custom Jingle Balls Message!</title>
 
@@ -10,10 +11,12 @@
             font-family: Vivaldi;
             color: #E9A000;
         }
+
         #customUrlTryout {
             color: inherit;
             text-decoration: none;
         }
+
         #boardBackground {
             height: 640px;
             width: 999px;
@@ -27,6 +30,7 @@
             left: 0px;
             top: 0px;
         }
+
         #bow {
             background-image: url(images/Bow.png);
             position: absolute;
@@ -35,6 +39,7 @@
             left: 15px;
             top: 15px;
         }
+
         #scoreBackground {
             background-image: url(images/ScoreArea.png);
             width: 382px;
@@ -48,11 +53,13 @@
             font-family: Vivaldi;
             color: #E9A000;
         }
+
         #instructions {
             font-size: 32pt;
             padding-top: 40px;
             text-align: center;
         }
+
         #message {
             font-size: 24pt;
             padding-left: 30px;
@@ -60,6 +67,7 @@
             box-sizing: border-box;
             overflow: hidden;
         }
+
         #shine1 {
             opacity: 1;
             background-image: url(images/Shine1.png);
@@ -69,6 +77,7 @@
             left: 890px;
             top: 200px;
         }
+
         #shine2 {
             opacity: 1;
             background-image: url(images/Shine2.png);
@@ -78,6 +87,7 @@
             left: -45px;
             top: 250px;
         }
+
         #shine3 {
             opacity: 1;
             background-image: url(images/Shine2.png);
@@ -87,6 +97,7 @@
             left: 500px;
             top: -40px;
         }
+
         #messageInput {
             padding-left: 250px;
             padding-top: 20px;
@@ -121,6 +132,7 @@
         }
     </script>
 </head>
+
 <body onload="messageChanged(this);">
     <div id="boardBackground">
         <div id="messageInput">
@@ -133,34 +145,53 @@
                     <th width="100" align="left">Alignment</th>
                 </tr>
                 <tr>
-                    <td align="center"><input type="checkbox" id="enableLine1" checked="checked" onchange="messageChanged(this)"/></td>
-                    <td><input type="text" id="messageLine1" value="Your Message Here" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"/></td>
-                    <td><select id="alignment1" onchange="messageChanged(this)"><option>Left</option><option>Center</option><option>Right</option></select></td>
+                    <td align="center"><input type="checkbox" id="enableLine1" checked="checked" onchange="messageChanged(this)"
+                        /></td>
+                    <td><input type="text" id="messageLine1" value="Your Message Here" size="40" onchange="messageChanged(this)"
+                            onkeypress="messageChanged(this)" /></td>
+                    <td><select id="alignment1" onchange="messageChanged(this)"><option>Left</option>
+                            <option>Center</option>
+                            <option>Right</option></select></td>
                 </tr>
                 <tr>
-                    <td align="center"><input type="checkbox" id="enableLine2" onchange="messageChanged(this)"/></td>
-                    <td><input type="text" id="messageLine2" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"/></td>
-                    <td><select id="alignment2" onchange="messageChanged(this)"><option>Left</option><option>Center</option><option>Right</option></select></td>
+                    <td align="center"><input type="checkbox" id="enableLine2" onchange="messageChanged(this)" /></td>
+                    <td><input type="text" id="messageLine2" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
+                        /></td>
+                    <td><select id="alignment2" onchange="messageChanged(this)"><option>Left</option>
+                            <option>Center</option>
+                            <option>Right</option></select></td>
                 </tr>
                 <tr>
-                    <td align="center"><input type="checkbox" id="enableLine3" onchange="messageChanged(this)"/></td>
-                    <td><input type="text" id="messageLine3" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"/></td>
-                    <td><select id="alignment3" onchange="messageChanged(this)"><option>Left</option><option>Center</option><option>Right</option></select></td>
+                    <td align="center"><input type="checkbox" id="enableLine3" onchange="messageChanged(this)" /></td>
+                    <td><input type="text" id="messageLine3" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
+                        /></td>
+                    <td><select id="alignment3" onchange="messageChanged(this)"><option>Left</option>
+                            <option>Center</option>
+                            <option>Right</option></select></td>
                 </tr>
                 <tr>
-                    <td align="center"><input type="checkbox" id="enableLine4" onchange="messageChanged(this)"/></td>
-                    <td><input type="text" id="messageLine4" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"/></td>
-                    <td><select id="alignment4" onchange="messageChanged(this)"><option>Left</option><option>Center</option><option>Right</option></select></td>
+                    <td align="center"><input type="checkbox" id="enableLine4" onchange="messageChanged(this)" /></td>
+                    <td><input type="text" id="messageLine4" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
+                        /></td>
+                    <td><select id="alignment4" onchange="messageChanged(this)"><option>Left</option>
+                            <option>Center</option>
+                            <option>Right</option></select></td>
                 </tr>
                 <tr>
-                    <td align="center"><input type="checkbox" id="enableLine5" onchange="messageChanged(this)"/></td>
-                    <td><input type="text" id="messageLine5" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"/></td>
-                    <td><select id="alignment5" onchange="messageChanged(this)"><option>Left</option><option>Center</option><option>Right</option></select></td>
+                    <td align="center"><input type="checkbox" id="enableLine5" onchange="messageChanged(this)" /></td>
+                    <td><input type="text" id="messageLine5" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
+                        /></td>
+                    <td><select id="alignment5" onchange="messageChanged(this)"><option>Left</option>
+                            <option>Center</option>
+                            <option>Right</option></select></td>
                 </tr>
                 <tr>
-                    <td align="center"><input type="checkbox" id="enableLine6" onchange="messageChanged(this)"/></td>
-                    <td><input type="text" id="messageLine6" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"/></td>
-                    <td><select id="alignment6" onchange="messageChanged(this)"><option>Left</option><option>Center</option><option>Right</option></select></td>
+                    <td align="center"><input type="checkbox" id="enableLine6" onchange="messageChanged(this)" /></td>
+                    <td><input type="text" id="messageLine6" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
+                        /></td>
+                    <td><select id="alignment6" onchange="messageChanged(this)"><option>Left</option>
+                            <option>Center</option>
+                            <option>Right</option></select></td>
                 </tr>
             </table>
 
@@ -179,8 +210,9 @@
     </div>
     <div id="scoreBackground">
         <div id="instructions">Play to Unveil our Christmas Message!</div>
-        <hr color="E9A000" align="center" width="80%"/>
+        <hr color="E9A000" align="center" width="80%" />
         <div id="message"></div>
     </div>
 </body>
+
 </html>
