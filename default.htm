@@ -2,385 +2,385 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>Happy Holidays from Origame Studios</title>
+  <title>Happy Holidays from Origame Studios</title>
 
-    <link href="css/default.css" rel="stylesheet">
+  <link href="css/default.css" rel="stylesheet">
 
-    <script type="text/javascript" src="BrowserTweaks/RequestAnimationFrame.js"></script>
+  <script type="text/javascript" src="BrowserTweaks/RequestAnimationFrame.js"></script>
 
-    <script type="text/javascript" src="js/CustomMessage.js"></script>
+  <script type="text/javascript" src="js/CustomMessage.js"></script>
 
-    <script type="text/javascript" src="SpriteEngine/AnimationManager.js"></script>
-    <script type="text/javascript" src="SpriteEngine/HTMLAnimations.js"></script>
-    <script type="text/javascript" src="SpriteEngine/ImageMap.js"></script>
-    <script type="text/javascript" src="SpriteEngine/Sprite.js"></script>
+  <script type="text/javascript" src="SpriteEngine/AnimationManager.js"></script>
+  <script type="text/javascript" src="SpriteEngine/HTMLAnimations.js"></script>
+  <script type="text/javascript" src="SpriteEngine/ImageMap.js"></script>
+  <script type="text/javascript" src="SpriteEngine/Sprite.js"></script>
 
-    <script type="text/javascript" src="Connect3Engine/Piece.js"></script>
-    <script type="text/javascript" src="Connect3Engine/BoardActionInfo.js"></script>
-    <script type="text/javascript" src="Connect3Engine/Board.js"></script>
-    <script type="text/javascript" src="Connect3Engine/Iterator.js"></script>
-    <script type="text/javascript" src="Connect3Engine/Connect3Engine.js"></script>
-    <script type="text/javascript" src="Connect3Engine/CanvasConnect3Engine.js"></script>
-    <script type="text/javascript" src="js/JingleBallsConnect3Engine.js"></script>
+  <script type="text/javascript" src="Connect3Engine/Piece.js"></script>
+  <script type="text/javascript" src="Connect3Engine/BoardActionInfo.js"></script>
+  <script type="text/javascript" src="Connect3Engine/Board.js"></script>
+  <script type="text/javascript" src="Connect3Engine/Iterator.js"></script>
+  <script type="text/javascript" src="Connect3Engine/Connect3Engine.js"></script>
+  <script type="text/javascript" src="Connect3Engine/CanvasConnect3Engine.js"></script>
+  <script type="text/javascript" src="js/JingleBallsConnect3Engine.js"></script>
 
-    <script>
-        "use strict";
+  <script>
+    "use strict";
 
-        var pieceFrame = {
-            "frameCount": 8,
-            "width": 105,
-            "height": 105,
-            "totalWidth": 105,
-            "image": new ImageMap("images/GemSTrip.png")
-        };
+    var pieceFrame = {
+      "frameCount": 8,
+      "width": 105,
+      "height": 105,
+      "totalWidth": 105,
+      "image": new ImageMap("images/GemSTrip.png")
+    };
 
-        var rootSprite = new Sprite(0, 0, 1, 0);
-        // var engine = new CanvasConnect3Engine(6, 10, 105, "square");
-        var engine = new JingleBallsConnect3Engine(rootSprite, 7, 11, 105, "square", [
-            { "col": 0, "row": 0 },
-            { "col": 0, "row": 1 },
-            { "col": 0, "row": 2 },
+    var rootSprite = new Sprite(0, 0, 1, 0);
+    // var engine = new CanvasConnect3Engine(6, 10, 105, "square");
+    var engine = new JingleBallsConnect3Engine(rootSprite, 7, 11, 105, "square", [
+      { "col": 0, "row": 0 },
+      { "col": 0, "row": 1 },
+      { "col": 0, "row": 2 },
 
-            { "col": 1, "row": 0 },
-            { "col": 1, "row": 1 },
-            { "col": 1, "row": 2 },
+      { "col": 1, "row": 0 },
+      { "col": 1, "row": 1 },
+      { "col": 1, "row": 2 },
 
-            { "col": 2, "row": 0 },
-            { "col": 2, "row": 1 },
-            { "col": 2, "row": 2 }
-        ]);
-        var board = engine.board;
-        var messageDiv;
+      { "col": 2, "row": 0 },
+      { "col": 2, "row": 1 },
+      { "col": 2, "row": 2 }
+    ]);
+    var board = engine.board;
+    var messageDiv;
 
-        function animateMessageDiv() {
-            var oldHeight = messageDiv.currentHeight;
-            if (oldHeight !== messageDiv.targetHeight) {
-                var newHeight = (engine.completion * messageDiv.targetHeight);
+    function animateMessageDiv() {
+      var oldHeight = messageDiv.currentHeight;
+      if (oldHeight !== messageDiv.targetHeight) {
+        var newHeight = (engine.completion * messageDiv.targetHeight);
 
-                if (newHeight === messageDiv.targetHeight) {
-                    var sparkles = [
-                        { "sprite": document.getElementById("shine1"), "delay": Math.random() * 2000, "duration": Math.random() * 2000 + 500 },
-                        { "sprite": document.getElementById("shine2"), "delay": Math.random() * 2000, "duration": Math.random() * 2000 + 500 },
-                        { "sprite": document.getElementById("shine3"), "delay": Math.random() * 2000, "duration": Math.random() * 2000 + 500 }
-                    ]
-                    for (var i = 0; i < sparkles.length; i++) {
-                        var sparkle = sparkles[i];
-                        sparkle.style.display = "block";
+        if (newHeight === messageDiv.targetHeight) {
+          var sparkles = [
+            { "sprite": document.getElementById("shine1"), "delay": Math.random() * 2000, "duration": Math.random() * 2000 + 500 },
+            { "sprite": document.getElementById("shine2"), "delay": Math.random() * 2000, "duration": Math.random() * 2000 + 500 },
+            { "sprite": document.getElementById("shine3"), "delay": Math.random() * 2000, "duration": Math.random() * 2000 + 500 }
+          ]
+          for (var i = 0; i < sparkles.length; i++) {
+            var sparkle = sparkles[i];
+            sparkle.style.display = "block";
 
-                        AnimationManager.addAnimation(new CSSOpacityAnimation(sparkle.sprite, 0, 1, sparkle.delay, sparkle.duration, function (oldAnimation) {
-                            var newAnimation = new CSSOpacityAnimation(oldAnimation.sprite, oldAnimation.endOpacity, oldAnimation.startOpacity, oldAnimation.delay, oldAnimation.duration, oldAnimation.callbackComplete);
-                            AnimationManager.addAnimation(newAnimation);
-                        }));
-                    }
-                }
-
-                if (newHeight === messageDiv.targetHeight || oldHeight + 10 < newHeight) {
-                    messageDiv.currentHeight = newHeight;
-                    return new HeightAnimation(messageDiv, oldHeight, newHeight, 0, 800, null);
-                }
-            }
-            return null;
+            AnimationManager.addAnimation(new CSSOpacityAnimation(sparkle.sprite, 0, 1, sparkle.delay, sparkle.duration, function (oldAnimation) {
+              var newAnimation = new CSSOpacityAnimation(oldAnimation.sprite, oldAnimation.endOpacity, oldAnimation.startOpacity, oldAnimation.delay, oldAnimation.duration, oldAnimation.callbackComplete);
+              AnimationManager.addAnimation(newAnimation);
+            }));
+          }
         }
 
-        function SquareBoard() {
-            messageDiv = document.getElementById("message");
-
-            if (window.location.search.match("^\\?customMessage=")) {
-                try {
-                    var encodedMessage = window.location.search.substring("?customMessage=".length);
-                    var messageObject = JSON.parse(window.atob(decodeURIComponent(encodedMessage)));
-                    var messageElements = [];
-
-                    for (var i = 1; i < 6; i++) {
-                        var enabled = messageObject["e" + i];
-                        var message = messageObject["m" + i];
-                        var alignment = messageObject["a" + i];
-
-                        var spanMessage = createSpanForMessage(enabled, message, alignment);
-                        if (spanMessage !== null) {
-                            messageElements.push(spanMessage);
-                        }
-                    }
-
-                    if (messageElements.length > 0) {
-                        messageDiv.innerText = "";
-                        for (var i = 0; i < messageElements.length; i++) {
-                            messageDiv.appendChild(messageElements[i]);
-                        }
-                    }
-                } catch (exc) {
-                }
-            }
-
-            messageDiv.targetHeight = messageDiv.offsetHeight;
-            engine.targetScore = messageDiv.targetHeight * 150;
-            messageDiv.currentHeight = 0;
-            messageDiv.style.height = "0px";
-
-            document.getElementById("board").addEventListener("MSPointerDown", initiateDrag);
-            requestAnimationFrame(renderBoard);
+        if (newHeight === messageDiv.targetHeight || oldHeight + 10 < newHeight) {
+          messageDiv.currentHeight = newHeight;
+          return new HeightAnimation(messageDiv, oldHeight, newHeight, 0, 800, null);
         }
+      }
+      return null;
+    }
 
-        function renderBoard() {
-            AnimationManager.update();
-            var canvas = document.getElementById("board");
-            var ctx = canvas.getContext("2d");
+    function SquareBoard() {
+      messageDiv = document.getElementById("message");
 
-            canvas.width = board.columnCount * engine.pieceSize + (board.columnCount - 1) * engine.piecePadding;
-            canvas.height = board.rowCount * engine.pieceSize + (board.rowCount - 1) * engine.piecePadding;
+      if (window.location.search.match("^\\?customMessage=")) {
+        try {
+          var encodedMessage = window.location.search.substring("?customMessage=".length);
+          var messageObject = JSON.parse(window.atob(decodeURIComponent(encodedMessage)));
+          var messageElements = [];
 
-            rootSprite.draw(ctx);
-            requestAnimationFrame(renderBoard);
-        }
+          for (var i = 1; i < 6; i++) {
+            var enabled = messageObject["e" + i];
+            var message = messageObject["m" + i];
+            var alignment = messageObject["a" + i];
 
-        function normalizeEventOffsetToCanvasOffset(canvas, evt) {
-            var targetStyle = window.getComputedStyle(canvas);
-            var pieceStride = (engine.pieceSize + engine.piecePadding);
-            var normalizedPoint = {
-                "x": evt.offsetX * (canvas.width / parseFloat(targetStyle.width.slice(0, -2))),
-                "y": evt.offsetY * (canvas.height / parseFloat(targetStyle.height.slice(0, -2))),
-            };
-            normalizedPoint.col = parseInt(normalizedPoint.x / pieceStride);
-            normalizedPoint.row = parseInt(normalizedPoint.y / pieceStride);
-            return normalizedPoint;
-        }
-
-        var selectedPiece;
-        function clickPiece(evt) {
-            if (engine.ignoreFollowingClick) {
-                delete engine.ignoreFollowingClick;
-                return;
+            var spanMessage = createSpanForMessage(enabled, message, alignment);
+            if (spanMessage !== null) {
+              messageElements.push(spanMessage);
             }
-            if (engine.interactionEnabled === false) {
-                return;
+          }
+
+          if (messageElements.length > 0) {
+            messageDiv.innerText = "";
+            for (var i = 0; i < messageElements.length; i++) {
+              messageDiv.appendChild(messageElements[i]);
             }
+          }
+        } catch (exc) {
+        }
+      }
 
-            var normalizedPoint = normalizeEventOffsetToCanvasOffset(document.getElementById("board"), evt);
-            var col = normalizedPoint.col;
-            var row = normalizedPoint.row;
+      messageDiv.targetHeight = messageDiv.offsetHeight;
+      engine.targetScore = messageDiv.targetHeight * 150;
+      messageDiv.currentHeight = 0;
+      messageDiv.style.height = "0px";
 
-            if (selectedPiece) {
-                engine.interactionEnabled = false;
-                var selectedPiece2 = board.columnArray[col][row];
-                var actionArray = engine.swapPiece(selectedPiece, selectedPiece2);
-                engine.processActionArray(actionArray, function () {
-                    engine.interactionEnabled = true;
-                    var messageAnimation = animateMessageDiv();
-                    if (messageAnimation) {
-                        AnimationManager.addAnimation(messageAnimation);
-                    }
-                });
+      document.getElementById("board").addEventListener("MSPointerDown", initiateDrag);
+      requestAnimationFrame(renderBoard);
+    }
 
-                selectedPiece = undefined;
+    function renderBoard() {
+      AnimationManager.update();
+      var canvas = document.getElementById("board");
+      var ctx = canvas.getContext("2d");
+
+      canvas.width = board.columnCount * engine.pieceSize + (board.columnCount - 1) * engine.piecePadding;
+      canvas.height = board.rowCount * engine.pieceSize + (board.rowCount - 1) * engine.piecePadding;
+
+      rootSprite.draw(ctx);
+      requestAnimationFrame(renderBoard);
+    }
+
+    function normalizeEventOffsetToCanvasOffset(canvas, evt) {
+      var targetStyle = window.getComputedStyle(canvas);
+      var pieceStride = (engine.pieceSize + engine.piecePadding);
+      var normalizedPoint = {
+        "x": evt.offsetX * (canvas.width / parseFloat(targetStyle.width.slice(0, -2))),
+        "y": evt.offsetY * (canvas.height / parseFloat(targetStyle.height.slice(0, -2))),
+      };
+      normalizedPoint.col = parseInt(normalizedPoint.x / pieceStride);
+      normalizedPoint.row = parseInt(normalizedPoint.y / pieceStride);
+      return normalizedPoint;
+    }
+
+    var selectedPiece;
+    function clickPiece(evt) {
+      if (engine.ignoreFollowingClick) {
+        delete engine.ignoreFollowingClick;
+        return;
+      }
+      if (engine.interactionEnabled === false) {
+        return;
+      }
+
+      var normalizedPoint = normalizeEventOffsetToCanvasOffset(document.getElementById("board"), evt);
+      var col = normalizedPoint.col;
+      var row = normalizedPoint.row;
+
+      if (selectedPiece) {
+        engine.interactionEnabled = false;
+        var selectedPiece2 = board.columnArray[col][row];
+        var actionArray = engine.swapPiece(selectedPiece, selectedPiece2);
+        engine.processActionArray(actionArray, function () {
+          engine.interactionEnabled = true;
+          var messageAnimation = animateMessageDiv();
+          if (messageAnimation) {
+            AnimationManager.addAnimation(messageAnimation);
+          }
+        });
+
+        selectedPiece = undefined;
+      }
+      else {
+        selectedPiece = board.columnArray[col][row];
+      }
+    }
+
+    function initiateDrag(evt) {
+      if (engine.interactionEnabled !== false && evt.isPrimary) {
+        // Set up the canvas to receive input.
+        this.msSetPointerCapture(evt.pointerId);
+        this.addEventListener("MSPointerMove", doDrag);
+        this.addEventListener("MSPointerUp", commitDrag);
+        this.addEventListener("MSPointerCancel", cancelDrag);
+        this.addEventListener("MSLostPointerCapture", cancelDrag);
+        this.halfX = engine.pieceSize / 2;
+        this.quarterX = engine.pieceSize / 4;
+        this.maxDistance = this.halfX * 2;
+        this.halfY = engine.pieceSize / 2;
+        this.dragging = false;
+
+        var normalizedPoint = normalizeEventOffsetToCanvasOffset(this, evt);
+        this.initialPoint = normalizedPoint;
+        this.initialPoint.x -= this.halfX;
+        this.initialPoint.y -= this.halfY;
+        this.initialPiece = engine.board.columnArray[this.initialPoint.col][this.initialPoint.row];
+
+        doDrag.call(this, evt);
+      }
+    }
+
+    function doDrag(evt) {
+      var normalizedPoint = normalizeEventOffsetToCanvasOffset(this, evt);
+
+      if (!this.dragging) {
+        var dragX = normalizedPoint.x - this.halfX - this.initialPoint.x;
+        var dragY = normalizedPoint.y - this.halfY - this.initialPoint.y;
+
+        var distance = Math.abs(Math.sqrt(dragX * dragX + dragY * dragY));
+        if (distance > this.quarterX) {
+          selectedPiece = undefined;
+          this.dragging = true;
+
+          // Remove our current sprite from the tree
+          var removeSprite = this.initialPiece.sprite;
+          rootSprite.children = rootSprite.children.filter(function (elem) { return elem !== removeSprite; });
+          rootSprite.children.push(removeSprite);
+        }
+      }
+
+      if (this.dragging) {
+        engine.ignoreFollowingClick = true;
+        var translateX = (normalizedPoint.x - this.halfX) - this.initialPoint.x;
+        var translateY = (normalizedPoint.y - this.halfY) - this.initialPoint.y;
+        var distance = Math.abs(Math.sqrt(translateX * translateX + translateY * translateY));
+        if (distance > this.halfX) {
+          var normalizeX = (translateX / distance);
+          var normalizeY = (translateY / distance);
+
+          if (distance > this.maxDistance) {
+            translateX = normalizeX * this.maxDistance;
+            translateY = normalizeY * this.maxDistance;
+          }
+
+          var cascadeDirection;
+          if (engine.board.boardType === "square") {
+            // Add 45 degress to create better rails for NSEW
+            var angle = Math.acos(normalizeX * 1);
+            if (angle >= Math.PI / 4 && angle <= Math.PI * 0.75) {
+              if (normalizeY > 0) {
+                cascadeDirection = Iterator.TYPE_VERT_DOWN;
+              }
+              else {
+                cascadeDirection = Iterator.TYPE_VERT_UP;
+              }
+            }
+            else if (angle < Math.PI / 4) {
+              cascadeDirection = Iterator.TYPE_HORZ_RIGHT
             }
             else {
-                selectedPiece = board.columnArray[col][row];
+              cascadeDirection = Iterator.TYPE_HORZ_LEFT;
             }
-        }
-
-        function initiateDrag(evt) {
-            if (engine.interactionEnabled !== false && evt.isPrimary) {
-                // Set up the canvas to receive input.
-                this.msSetPointerCapture(evt.pointerId);
-                this.addEventListener("MSPointerMove", doDrag);
-                this.addEventListener("MSPointerUp", commitDrag);
-                this.addEventListener("MSPointerCancel", cancelDrag);
-                this.addEventListener("MSLostPointerCapture", cancelDrag);
-                this.halfX = engine.pieceSize / 2;
-                this.quarterX = engine.pieceSize / 4;
-                this.maxDistance = this.halfX * 2;
-                this.halfY = engine.pieceSize / 2;
-                this.dragging = false;
-
-                var normalizedPoint = normalizeEventOffsetToCanvasOffset(this, evt);
-                this.initialPoint = normalizedPoint;
-                this.initialPoint.x -= this.halfX;
-                this.initialPoint.y -= this.halfY;
-                this.initialPiece = engine.board.columnArray[this.initialPoint.col][this.initialPoint.row];
-
-                doDrag.call(this, evt);
-            }
-        }
-
-        function doDrag(evt) {
-            var normalizedPoint = normalizeEventOffsetToCanvasOffset(this, evt);
-
-            if (!this.dragging) {
-                var dragX = normalizedPoint.x - this.halfX - this.initialPoint.x;
-                var dragY = normalizedPoint.y - this.halfY - this.initialPoint.y;
-
-                var distance = Math.abs(Math.sqrt(dragX * dragX + dragY * dragY));
-                if (distance > this.quarterX) {
-                    selectedPiece = undefined;
-                    this.dragging = true;
-
-                    // Remove our current sprite from the tree
-                    var removeSprite = this.initialPiece.sprite;
-                    rootSprite.children = rootSprite.children.filter(function (elem) { return elem !== removeSprite; });
-                    rootSprite.children.push(removeSprite);
-                }
-            }
-
-            if (this.dragging) {
-                engine.ignoreFollowingClick = true;
-                var translateX = (normalizedPoint.x - this.halfX) - this.initialPoint.x;
-                var translateY = (normalizedPoint.y - this.halfY) - this.initialPoint.y;
-                var distance = Math.abs(Math.sqrt(translateX * translateX + translateY * translateY));
-                if (distance > this.halfX) {
-                    var normalizeX = (translateX / distance);
-                    var normalizeY = (translateY / distance);
-
-                    if (distance > this.maxDistance) {
-                        translateX = normalizeX * this.maxDistance;
-                        translateY = normalizeY * this.maxDistance;
-                    }
-
-                    var cascadeDirection;
-                    if (engine.board.boardType === "square") {
-                        // Add 45 degress to create better rails for NSEW
-                        var angle = Math.acos(normalizeX * 1);
-                        if (angle >= Math.PI / 4 && angle <= Math.PI * 0.75) {
-                            if (normalizeY > 0) {
-                                cascadeDirection = Iterator.TYPE_VERT_DOWN;
-                            }
-                            else {
-                                cascadeDirection = Iterator.TYPE_VERT_UP;
-                            }
-                        }
-                        else if (angle < Math.PI / 4) {
-                            cascadeDirection = Iterator.TYPE_HORZ_RIGHT
-                        }
-                        else {
-                            cascadeDirection = Iterator.TYPE_HORZ_LEFT;
-                        }
-                    }
-                    else {
-                        var angle = Math.acos(normalizeX * 1);
-                        var railAngle = Math.min(2, parseInt(angle / Math.PI * 3));
-                        if (normalizeY > 0) {
-                            switch (railAngle) {
-                                case 0: cascadeDirection = Iterator.TYPE_DIAG_RIGHTTOLEFT_BACKWARD; break;
-                                case 1: cascadeDirection = Iterator.TYPE_VERT_DOWN; break;
-                                case 2: cascadeDirection = Iterator.TYPE_DIAG_LEFTTORIGHT_BACKWARD; break;
-                            }
-                        }
-                        else {
-                            switch (railAngle) {
-                                case 0: cascadeDirection = Iterator.TYPE_DIAG_LEFTTORIGHT_FORWARD; break;
-                                case 1: cascadeDirection = Iterator.TYPE_VERT_UP; break;
-                                case 2: cascadeDirection = Iterator.TYPE_DIAG_RIGHTTOLEFT_FORWARD; break;
-                            }
-                        }
-                    }
-
-                    var positionIterator = new PositionIterator();
-                    positionIterator.Initialize(engine.board, cascadeDirection, 0);
-                    positionIterator.setCurrentOffset(this.initialPoint.col, this.initialPoint.row);
-                    positionIterator.moveNext();
-
-                    var newPiece = engine.board.columnArray[positionIterator.currentCol][positionIterator.currentRow];
-                    if (newPiece !== this.oldOffsetPiece) {
-                        if (this.oldOffsetPiece) {
-                            if (this.oldOffsetPiece.swapAnimation) {
-                                this.oldOffsetPiece.swapAnimation.cancel(false);
-                                delete this.oldOffsetPiece.swapAnimation;
-                            }
-                            // We never swapped the piece so updating the position should snap it back into place.
-                            this.oldOffsetPiece.sprite.updatePositionFromPiece();
-                        }
-                        if (newPiece) {
-                            var startPos = newPiece.sprite.getUpdatedPositionFromPiece();
-                            var endPos = this.initialPiece.sprite.getUpdatedPositionFromPiece();
-
-                            newPiece.swapAnimation = new TranslationAnimation(newPiece.sprite, startPos.x, startPos.y, endPos.x, endPos.y, 0, 130, null);
-                            AnimationManager.addAnimation(newPiece.swapAnimation);
-                        }
-                    }
-                }
-                else {
-                    if (this.oldOffsetPiece != null) {
-                        if (this.oldOffsetPiece.swapAnimation) {
-                            this.oldOffsetPiece.swapAnimation.cancel(false);
-                            delete this.oldOffsetPiece.swapAnimation;
-                        }
-                        // We never swapped the piece so updating the position should snap it back into place.
-                        this.oldOffsetPiece.sprite.updatePositionFromPiece();
-                    }
-                }
-                this.oldOffsetPiece = newPiece;
-                this.initialPiece.sprite.x = this.initialPoint.x + translateX;
-                this.initialPiece.sprite.y = this.initialPoint.y + translateY;
-            }
-        }
-
-        function commitDrag(evt) {
-            if (this.oldOffsetPiece) {
-                engine.interactionEnabled = false;
-                var actionArray = engine.swapPiece(this.initialPiece, this.oldOffsetPiece);
-                cancelDrag.call(this, evt, true);
-
-                // Remove the first swap action and play it immediately instead of on a 250ms delay
-                if (actionArray.length > 0 && actionArray[0].type === "swap") {
-                    var swapAction = actionArray.shift();
-                    AnimationManager.addAnimation(new SwapAnimation(engine, swapAction.firstPieceInfo, swapAction.secondPieceInfo, 0, 0, null));
-                }
-
-                engine.processActionArray(actionArray, function () {
-                    engine.interactionEnabled = true;
-                    var messageAnimation = animateMessageDiv();
-                    if (messageAnimation) {
-                        AnimationManager.addAnimation(messageAnimation);
-                    }
-                });
+          }
+          else {
+            var angle = Math.acos(normalizeX * 1);
+            var railAngle = Math.min(2, parseInt(angle / Math.PI * 3));
+            if (normalizeY > 0) {
+              switch (railAngle) {
+                case 0: cascadeDirection = Iterator.TYPE_DIAG_RIGHTTOLEFT_BACKWARD; break;
+                case 1: cascadeDirection = Iterator.TYPE_VERT_DOWN; break;
+                case 2: cascadeDirection = Iterator.TYPE_DIAG_LEFTTORIGHT_BACKWARD; break;
+              }
             }
             else {
-                cancelDrag.call(this, evt);
+              switch (railAngle) {
+                case 0: cascadeDirection = Iterator.TYPE_DIAG_LEFTTORIGHT_FORWARD; break;
+                case 1: cascadeDirection = Iterator.TYPE_VERT_UP; break;
+                case 2: cascadeDirection = Iterator.TYPE_DIAG_RIGHTTOLEFT_FORWARD; break;
+              }
             }
-        }
+          }
 
-        function cancelDrag(evt, skipPieceUpdates) {
-            this.removeEventListener("MSPointerMove", doDrag);
-            this.removeEventListener("MSPointerUp", commitDrag);
-            this.removeEventListener("MSPointerCancel", cancelDrag);
-            this.removeEventListener("MSLostPointerCapture", cancelDrag);
+          var positionIterator = new PositionIterator();
+          positionIterator.Initialize(engine.board, cascadeDirection, 0);
+          positionIterator.setCurrentOffset(this.initialPoint.col, this.initialPoint.row);
+          positionIterator.moveNext();
 
+          var newPiece = engine.board.columnArray[positionIterator.currentCol][positionIterator.currentRow];
+          if (newPiece !== this.oldOffsetPiece) {
             if (this.oldOffsetPiece) {
-                if (this.oldOffsetPiece.swapAnimation) {
-                    this.oldOffsetPiece.swapAnimation.cancel(false);
-                    delete this.oldOffsetPiece.swapAnimation;
-                }
-                this.oldOffsetPiece.sprite.updatePositionFromPiece();
-                delete this.oldOffsetPiece;
+              if (this.oldOffsetPiece.swapAnimation) {
+                this.oldOffsetPiece.swapAnimation.cancel(false);
+                delete this.oldOffsetPiece.swapAnimation;
+              }
+              // We never swapped the piece so updating the position should snap it back into place.
+              this.oldOffsetPiece.sprite.updatePositionFromPiece();
             }
-            this.initialPiece.sprite.updatePositionFromPiece();
+            if (newPiece) {
+              var startPos = newPiece.sprite.getUpdatedPositionFromPiece();
+              var endPos = this.initialPiece.sprite.getUpdatedPositionFromPiece();
+
+              newPiece.swapAnimation = new TranslationAnimation(newPiece.sprite, startPos.x, startPos.y, endPos.x, endPos.y, 0, 130, null);
+              AnimationManager.addAnimation(newPiece.swapAnimation);
+            }
+          }
         }
-    </script>
+        else {
+          if (this.oldOffsetPiece != null) {
+            if (this.oldOffsetPiece.swapAnimation) {
+              this.oldOffsetPiece.swapAnimation.cancel(false);
+              delete this.oldOffsetPiece.swapAnimation;
+            }
+            // We never swapped the piece so updating the position should snap it back into place.
+            this.oldOffsetPiece.sprite.updatePositionFromPiece();
+          }
+        }
+        this.oldOffsetPiece = newPiece;
+        this.initialPiece.sprite.x = this.initialPoint.x + translateX;
+        this.initialPiece.sprite.y = this.initialPoint.y + translateY;
+      }
+    }
+
+    function commitDrag(evt) {
+      if (this.oldOffsetPiece) {
+        engine.interactionEnabled = false;
+        var actionArray = engine.swapPiece(this.initialPiece, this.oldOffsetPiece);
+        cancelDrag.call(this, evt, true);
+
+        // Remove the first swap action and play it immediately instead of on a 250ms delay
+        if (actionArray.length > 0 && actionArray[0].type === "swap") {
+          var swapAction = actionArray.shift();
+          AnimationManager.addAnimation(new SwapAnimation(engine, swapAction.firstPieceInfo, swapAction.secondPieceInfo, 0, 0, null));
+        }
+
+        engine.processActionArray(actionArray, function () {
+          engine.interactionEnabled = true;
+          var messageAnimation = animateMessageDiv();
+          if (messageAnimation) {
+            AnimationManager.addAnimation(messageAnimation);
+          }
+        });
+      }
+      else {
+        cancelDrag.call(this, evt);
+      }
+    }
+
+    function cancelDrag(evt, skipPieceUpdates) {
+      this.removeEventListener("MSPointerMove", doDrag);
+      this.removeEventListener("MSPointerUp", commitDrag);
+      this.removeEventListener("MSPointerCancel", cancelDrag);
+      this.removeEventListener("MSLostPointerCapture", cancelDrag);
+
+      if (this.oldOffsetPiece) {
+        if (this.oldOffsetPiece.swapAnimation) {
+          this.oldOffsetPiece.swapAnimation.cancel(false);
+          delete this.oldOffsetPiece.swapAnimation;
+        }
+        this.oldOffsetPiece.sprite.updatePositionFromPiece();
+        delete this.oldOffsetPiece;
+      }
+      this.initialPiece.sprite.updatePositionFromPiece();
+    }
+  </script>
 </head>
 
 <body onload="SquareBoard()" onselectionstart="return false;">
-    <div id="boardBackground" draggable="false">
-        <canvas id="board" onclick="clickPiece(event)"></canvas>
-        <div id="bow"></div>
-        <div id="shine1"></div>
-        <div id="shine2"></div>
-        <div id="shine3"></div>
+  <div id="boardBackground" draggable="false">
+    <canvas id="board" onclick="clickPiece(event)"></canvas>
+    <div id="bow"></div>
+    <div id="shine1"></div>
+    <div id="shine2"></div>
+    <div id="shine3"></div>
+  </div>
+  <div id="scoreBackground">
+    <div id="instructions">Play to Unveil our Christmas Message!</div>
+    <hr color="E9A000" align="center" width="80%" />
+    <div id="message">
+      <span style="width: 100%; display: inline-block; margin-bottom: 10px;">Dear Player,</span>
+      <span style="width: 100%; display: inline-block; margin-bottom: 10px;">Thank you for sampling our holiday seasoned
+        card.
+      </span>
+      <span style="width: 100%; display: inline-block; margin-bottom: 10px;">We hope to provide many more interesting and
+        timely experiences for you in the future.</span>
+      <span style="width: 100%; display: inline-block; text-align: right;">Happly Holidays,</span>
+      <span style="width: 100%; display: inline-block; text-align: right;">Origame Studios</span>
     </div>
-    <div id="scoreBackground">
-        <div id="instructions">Play to Unveil our Christmas Message!</div>
-        <hr color="E9A000" align="center" width="80%" />
-        <div id="message">
-            <span style="width: 100%; display: inline-block; margin-bottom: 10px;">Dear Player,</span>
-            <span style="width: 100%; display: inline-block; margin-bottom: 10px;">Thank you for sampling our holiday seasoned
-                card.
-            </span>
-            <span style="width: 100%; display: inline-block; margin-bottom: 10px;">We hope to provide many more interesting
-                and timely experiences for you in the future.</span>
-            <span style="width: 100%; display: inline-block; text-align: right;">Happly Holidays,</span>
-            <span style="width: 100%; display: inline-block; text-align: right;">Origame Studios</span>
-        </div>
-    </div>
-    <h1 id="selfService"><a href="JingleBallsConfiguration.htm">Build Your Own Holiday Message!!!</a></h1>
-    <audio src="music/JingleBells.mp3" autoplay="autoplay" loop="loop"></audio>
+  </div>
+  <h1 id="selfService"><a href="JingleBallsConfiguration.htm">Build Your Own Holiday Message!!!</a></h1>
+  <audio src="music/JingleBells.mp3" autoplay="autoplay" loop="loop"></audio>
 </body>
 
 </html>

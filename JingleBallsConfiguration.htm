@@ -2,217 +2,216 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>Origame Studios - Configure Your Custom Jingle Balls Message!</title>
+  <title>Origame Studios - Configure Your Custom Jingle Balls Message!</title>
 
-    <script type="text/javascript" src="js/CustomMessage.js"></script>
-    <style>
-        html {
-            background-color: lightblue;
-            font-family: Vivaldi;
-            color: #E9A000;
+  <script type="text/javascript" src="js/CustomMessage.js"></script>
+  <style>
+    html {
+      background-color: lightblue;
+      font-family: Vivaldi;
+      color: #E9A000;
+    }
+
+    #customUrlTryout {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    #boardBackground {
+      height: 640px;
+      width: 999px;
+      background-image: url(images/PlayBackground.png);
+      background-repeat: no-repeat;
+      background-position: center center;
+      padding-top: 45px;
+      padding-left: 65px;
+      box-sizing: border-box;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+
+    #bow {
+      background-image: url(images/Bow.png);
+      position: absolute;
+      width: 275px;
+      height: 252px;
+      left: 15px;
+      top: 15px;
+    }
+
+    #scoreBackground {
+      background-image: url(images/ScoreArea.png);
+      width: 382px;
+      height: 641px;
+      position: absolute;
+      box-sizing: border-box;
+      position: absolute;
+      left: 1050px;
+      top: 20px;
+
+      font-family: Vivaldi;
+      color: #E9A000;
+    }
+
+    #instructions {
+      font-size: 32pt;
+      padding-top: 40px;
+      text-align: center;
+    }
+
+    #message {
+      font-size: 24pt;
+      padding-left: 30px;
+      padding-right: 25px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    #shine1 {
+      opacity: 1;
+      background-image: url(images/Shine1.png);
+      position: absolute;
+      width: 171px;
+      height: 174px;
+      left: 890px;
+      top: 200px;
+    }
+
+    #shine2 {
+      opacity: 1;
+      background-image: url(images/Shine2.png);
+      position: absolute;
+      width: 135px;
+      height: 137px;
+      left: -45px;
+      top: 250px;
+    }
+
+    #shine3 {
+      opacity: 1;
+      background-image: url(images/Shine2.png);
+      position: absolute;
+      width: 135px;
+      height: 137px;
+      left: 500px;
+      top: -40px;
+    }
+
+    #messageInput {
+      padding-left: 250px;
+      padding-top: 20px;
+    }
+  </style>
+
+  <script>
+    function messageChanged() {
+      var messageHost = document.getElementById("message");
+      messageHost.innerText = "";
+
+      var messageObject = {};
+      for (var i = 1; i <= 6; i++) {
+        var enabled = document.getElementById("enableLine" + i).checked;
+        var message = document.getElementById("messageLine" + i).value;
+        var alignSelect = document.getElementById("alignment" + i);
+        var alignment = alignSelect.options[alignSelect.selectedIndex].value;
+
+        messageObject["e" + i] = enabled;
+        messageObject["m" + i] = message;
+        messageObject["a" + i] = alignment;
+
+        var spanMessage = createSpanForMessage(enabled, message, alignment);
+        if (spanMessage) {
+          messageHost.appendChild(spanMessage);
         }
+      }
 
-        #customUrlTryout {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        #boardBackground {
-            height: 640px;
-            width: 999px;
-            background-image: url(images/PlayBackground.png);
-            background-repeat: no-repeat;
-            background-position: center center;
-            padding-top: 45px;
-            padding-left: 65px;
-            box-sizing: border-box;
-            position: absolute;
-            left: 0px;
-            top: 0px;
-        }
-
-        #bow {
-            background-image: url(images/Bow.png);
-            position: absolute;
-            width: 275px;
-            height: 252px;
-            left: 15px;
-            top: 15px;
-        }
-
-        #scoreBackground {
-            background-image: url(images/ScoreArea.png);
-            width: 382px;
-            height: 641px;
-            position: absolute;
-            box-sizing: border-box;
-            position: absolute;
-            left: 1050px;
-            top: 20px;
-
-            font-family: Vivaldi;
-            color: #E9A000;
-        }
-
-        #instructions {
-            font-size: 32pt;
-            padding-top: 40px;
-            text-align: center;
-        }
-
-        #message {
-            font-size: 24pt;
-            padding-left: 30px;
-            padding-right: 25px;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-
-        #shine1 {
-            opacity: 1;
-            background-image: url(images/Shine1.png);
-            position: absolute;
-            width: 171px;
-            height: 174px;
-            left: 890px;
-            top: 200px;
-        }
-
-        #shine2 {
-            opacity: 1;
-            background-image: url(images/Shine2.png);
-            position: absolute;
-            width: 135px;
-            height: 137px;
-            left: -45px;
-            top: 250px;
-        }
-
-        #shine3 {
-            opacity: 1;
-            background-image: url(images/Shine2.png);
-            position: absolute;
-            width: 135px;
-            height: 137px;
-            left: 500px;
-            top: -40px;
-        }
-
-        #messageInput {
-            padding-left: 250px;
-            padding-top: 20px;
-        }
-    </style>
-
-    <script>
-        function messageChanged() {
-            var messageHost = document.getElementById("message");
-            messageHost.innerText = "";
-
-            var messageObject = {};
-            for (var i = 1; i <= 6; i++) {
-                var enabled = document.getElementById("enableLine" + i).checked;
-                var message = document.getElementById("messageLine" + i).value;
-                var alignSelect = document.getElementById("alignment" + i);
-                var alignment = alignSelect.options[alignSelect.selectedIndex].value;
-
-                messageObject["e" + i] = enabled;
-                messageObject["m" + i] = message;
-                messageObject["a" + i] = alignment;
-
-                var spanMessage = createSpanForMessage(enabled, message, alignment);
-                if (spanMessage) {
-                    messageHost.appendChild(spanMessage);
-                }
-            }
-
-            var customUrl = "http://" + location.host + "/default.htm?customMessage=" + encodeURIComponent(window.btoa(JSON.stringify(messageObject)));
-            document.getElementById("customUrl").value = customUrl;
-            document.getElementById("customUrlTryout").href = customUrl;
-        }
-    </script>
+      var customUrl = "http://" + location.host + "/default.htm?customMessage=" + encodeURIComponent(window.btoa(JSON.stringify(messageObject)));
+      document.getElementById("customUrl").value = customUrl;
+      document.getElementById("customUrlTryout").href = customUrl;
+    }
+  </script>
 </head>
 
 <body onload="messageChanged(this);">
-    <div id="boardBackground">
-        <div id="messageInput">
-            <h1>Customize Your Own Holiday Message!</h1>
+  <div id="boardBackground">
+    <div id="messageInput">
+      <h1>Customize Your Own Holiday Message!</h1>
 
-            <table>
-                <tr>
-                    <th width="100">Add Line</th>
-                    <th align="left">Message</th>
-                    <th width="100" align="left">Alignment</th>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" id="enableLine1" checked="checked" onchange="messageChanged(this)"
-                        /></td>
-                    <td><input type="text" id="messageLine1" value="Your Message Here" size="40" onchange="messageChanged(this)"
-                            onkeypress="messageChanged(this)" /></td>
-                    <td><select id="alignment1" onchange="messageChanged(this)"><option>Left</option>
-                            <option>Center</option>
-                            <option>Right</option></select></td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" id="enableLine2" onchange="messageChanged(this)" /></td>
-                    <td><input type="text" id="messageLine2" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
-                        /></td>
-                    <td><select id="alignment2" onchange="messageChanged(this)"><option>Left</option>
-                            <option>Center</option>
-                            <option>Right</option></select></td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" id="enableLine3" onchange="messageChanged(this)" /></td>
-                    <td><input type="text" id="messageLine3" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
-                        /></td>
-                    <td><select id="alignment3" onchange="messageChanged(this)"><option>Left</option>
-                            <option>Center</option>
-                            <option>Right</option></select></td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" id="enableLine4" onchange="messageChanged(this)" /></td>
-                    <td><input type="text" id="messageLine4" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
-                        /></td>
-                    <td><select id="alignment4" onchange="messageChanged(this)"><option>Left</option>
-                            <option>Center</option>
-                            <option>Right</option></select></td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" id="enableLine5" onchange="messageChanged(this)" /></td>
-                    <td><input type="text" id="messageLine5" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
-                        /></td>
-                    <td><select id="alignment5" onchange="messageChanged(this)"><option>Left</option>
-                            <option>Center</option>
-                            <option>Right</option></select></td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" id="enableLine6" onchange="messageChanged(this)" /></td>
-                    <td><input type="text" id="messageLine6" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
-                        /></td>
-                    <td><select id="alignment6" onchange="messageChanged(this)"><option>Left</option>
-                            <option>Center</option>
-                            <option>Right</option></select></td>
-                </tr>
-            </table>
+      <table>
+        <tr>
+          <th width="100">Add Line</th>
+          <th align="left">Message</th>
+          <th width="100" align="left">Alignment</th>
+        </tr>
+        <tr>
+          <td align="center"><input type="checkbox" id="enableLine1" checked="checked" onchange="messageChanged(this)" /></td>
+          <td><input type="text" id="messageLine1" value="Your Message Here" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
+            /></td>
+          <td><select id="alignment1" onchange="messageChanged(this)"><option>Left</option>
+              <option>Center</option>
+              <option>Right</option></select></td>
+        </tr>
+        <tr>
+          <td align="center"><input type="checkbox" id="enableLine2" onchange="messageChanged(this)" /></td>
+          <td><input type="text" id="messageLine2" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
+            /></td>
+          <td><select id="alignment2" onchange="messageChanged(this)"><option>Left</option>
+              <option>Center</option>
+              <option>Right</option></select></td>
+        </tr>
+        <tr>
+          <td align="center"><input type="checkbox" id="enableLine3" onchange="messageChanged(this)" /></td>
+          <td><input type="text" id="messageLine3" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
+            /></td>
+          <td><select id="alignment3" onchange="messageChanged(this)"><option>Left</option>
+              <option>Center</option>
+              <option>Right</option></select></td>
+        </tr>
+        <tr>
+          <td align="center"><input type="checkbox" id="enableLine4" onchange="messageChanged(this)" /></td>
+          <td><input type="text" id="messageLine4" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
+            /></td>
+          <td><select id="alignment4" onchange="messageChanged(this)"><option>Left</option>
+              <option>Center</option>
+              <option>Right</option></select></td>
+        </tr>
+        <tr>
+          <td align="center"><input type="checkbox" id="enableLine5" onchange="messageChanged(this)" /></td>
+          <td><input type="text" id="messageLine5" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
+            /></td>
+          <td><select id="alignment5" onchange="messageChanged(this)"><option>Left</option>
+              <option>Center</option>
+              <option>Right</option></select></td>
+        </tr>
+        <tr>
+          <td align="center"><input type="checkbox" id="enableLine6" onchange="messageChanged(this)" /></td>
+          <td><input type="text" id="messageLine6" size="40" onchange="messageChanged(this)" onkeypress="messageChanged(this)"
+            /></td>
+          <td><select id="alignment6" onchange="messageChanged(this)"><option>Left</option>
+              <option>Center</option>
+              <option>Right</option></select></td>
+        </tr>
+      </table>
 
-            <h1>Custom Url:</h1>
+      <h1>Custom Url:</h1>
 
-            <textarea id="customUrl" rows="4" cols="60">
+      <textarea id="customUrl" rows="4" cols="60">
             </textarea>
 
-            <h1><a target="_blank" href="" id="customUrlTryout">Try It Now!</a></h1>
-        </div>
+      <h1><a target="_blank" href="" id="customUrlTryout">Try It Now!</a></h1>
+    </div>
 
-        <div id="bow"></div>
-        <div id="shine1"></div>
-        <div id="shine2"></div>
-        <div id="shine3"></div>
-    </div>
-    <div id="scoreBackground">
-        <div id="instructions">Play to Unveil our Christmas Message!</div>
-        <hr color="E9A000" align="center" width="80%" />
-        <div id="message"></div>
-    </div>
+    <div id="bow"></div>
+    <div id="shine1"></div>
+    <div id="shine2"></div>
+    <div id="shine3"></div>
+  </div>
+  <div id="scoreBackground">
+    <div id="instructions">Play to Unveil our Christmas Message!</div>
+    <hr color="E9A000" align="center" width="80%" />
+    <div id="message"></div>
+  </div>
 </body>
 
 </html>
