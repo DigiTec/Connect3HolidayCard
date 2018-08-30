@@ -117,7 +117,6 @@ function BoardSprite(piece, frame, pieceSize, piecePadding) {
   this.piece = piece;
   this.pieceSize = pieceSize;
   this.piecePadding = piecePadding;
-  this.piece.sprite = this;
   this.updatePositionFromPiece();
 
   KeyFrameSprite.call(this, frame, this.x, this.y, 1, 0);

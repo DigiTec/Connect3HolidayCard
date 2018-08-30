@@ -25,7 +25,7 @@ Object.defineProperties(CanvasConnect3Engine.prototype, {
         row,
         board
       );
-      new BoardSprite(piece, pieceFrame, this.pieceSize, this.piecePadding);
+      piece.sprite = new BoardSprite(piece, pieceFrame, this.pieceSize, this.piecePadding);
       return piece;
     }
   },
