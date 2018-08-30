@@ -4,126 +4,11 @@
 <head>
     <title>Happy Holidays from Origame Studios</title>
 
-    <style>
-        html {
-            background-color: lightblue;
-        }
-
-        #selfService {
-            top: 620px;
-            position: absolute;
-            text-align: center;
-            font-family: Vivaldi;
-            color: #E9A000;
-            width: 1000px;
-            background-color: #550000;
-            border-radius: 15px;
-        }
-
-        #selfService A {
-            text-decoration: none;
-        }
-
-        #selfService :link {
-            color: inherit;
-        }
-
-        #selfService :visited {
-            color: inherit;
-        }
-
-        #boardBackground {
-            height: 640px;
-            width: 999px;
-            background-image: url(JingleBalls/images/PlayBackground.png);
-            background-repeat: no-repeat;
-            background-position: center center;
-            padding-top: 45px;
-            padding-left: 65px;
-            box-sizing: border-box;
-            position: absolute;
-            left: 0px;
-            top: 0px;
-        }
-
-        #board {
-            width: 864px;
-            height: 550px;
-        }
-
-        #bow {
-            background-image: url(JingleBalls/images/Bow.png);
-            position: absolute;
-            width: 275px;
-            height: 252px;
-            left: 15px;
-            top: 15px;
-        }
-
-        #scoreBackground {
-            background-image: url(JingleBalls/images/ScoreArea.png);
-            width: 382px;
-            height: 641px;
-            position: absolute;
-            box-sizing: border-box;
-            position: absolute;
-            left: 1050px;
-            top: 20px;
-            font-family: Vivaldi;
-            color: #E9A000;
-        }
-
-        #instructions {
-            font-size: 32pt;
-            padding-top: 40px;
-            text-align: center;
-        }
-
-        #message {
-            font-size: 24pt;
-            padding-left: 30px;
-            padding-right: 25px;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-
-        #shine1 {
-            display: none;
-            opacity: 0;
-            background-image: url(JingleBalls/images/Shine1.png);
-            position: absolute;
-            width: 171px;
-            height: 174px;
-            left: 890px;
-            top: 200px;
-        }
-
-        #shine2 {
-            display: none;
-            opacity: 0;
-            background-image: url(JingleBalls/images/Shine2.png);
-            position: absolute;
-            width: 135px;
-            height: 137px;
-            left: -45px;
-            top: 250px;
-        }
-
-        #shine3 {
-            display: none;
-            opacity: 0;
-            background-image: url(JingleBalls/images/Shine2.png);
-            position: absolute;
-            width: 135px;
-            height: 137px;
-            left: 500px;
-            top: -40px;
-        }
-    </style>
+    <link href="css/default.css" rel="stylesheet">
 
     <script type="text/javascript" src="BrowserTweaks/RequestAnimationFrame.js"></script>
 
-    <script type="text/javascript" src="JingleBalls/CustomMessage.js"></script>
+    <script type="text/javascript" src="js/CustomMessage.js"></script>
 
     <script type="text/javascript" src="SpriteEngine/AnimationManager.js"></script>
     <script type="text/javascript" src="SpriteEngine/HTMLAnimations.js"></script>
@@ -135,7 +20,7 @@
     <script type="text/javascript" src="Connect3Engine/Iterator.js"></script>
     <script type="text/javascript" src="Connect3Engine/Connect3Engine.js"></script>
     <script type="text/javascript" src="Connect3Engine/CanvasConnect3Engine.js"></script>
-    <script type="text/javascript" src="JingleBalls/JingleBallsConnect3Engine.js"></script>
+    <script type="text/javascript" src="js/JingleBallsConnect3Engine.js"></script>
 
     <script>
         "use strict";
@@ -506,8 +391,8 @@
             <span style="width: 100%; display: inline-block; text-align: right;">Origame Studios</span>
         </div>
     </div>
-    <h1 id="selfService"><a href="JingleBalls/JingleBallsConfiguration.htm">Build Your Own Holiday Message!!!</a></h1>
-    <audio src="JingleBalls/music/JingleBells.mp3" autoplay="autoplay" loop="loop"></audio>
+    <h1 id="selfService"><a href="JingleBallsConfiguration.htm">Build Your Own Holiday Message!!!</a></h1>
+    <audio src="music/JingleBells.mp3" autoplay="autoplay" loop="loop"></audio>
 </body>
 
 </html>

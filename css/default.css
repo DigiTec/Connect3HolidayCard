@@ -1,0 +1,114 @@
+html {
+  background-color: lightblue;
+}
+
+#selfService {
+  top: 620px;
+  position: absolute;
+  text-align: center;
+  font-family: Vivaldi;
+  color: #e9a000;
+  width: 1000px;
+  background-color: #550000;
+  border-radius: 15px;
+}
+
+#selfService a {
+  text-decoration: none;
+}
+
+#selfService :link {
+  color: inherit;
+}
+
+#selfService :visited {
+  color: inherit;
+}
+
+#boardBackground {
+  height: 640px;
+  width: 999px;
+  background-image: url(../images/PlayBackground.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding-top: 45px;
+  padding-left: 65px;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+#board {
+  width: 864px;
+  height: 550px;
+}
+
+#bow {
+  background-image: url(../images/Bow.png);
+  position: absolute;
+  width: 275px;
+  height: 252px;
+  left: 15px;
+  top: 15px;
+}
+
+#scoreBackground {
+  background-image: url(../images/ScoreArea.png);
+  width: 382px;
+  height: 641px;
+  position: absolute;
+  box-sizing: border-box;
+  position: absolute;
+  left: 1050px;
+  top: 20px;
+  font-family: Vivaldi;
+  color: #e9a000;
+}
+
+#instructions {
+  font-size: 32pt;
+  padding-top: 40px;
+  text-align: center;
+}
+
+#message {
+  font-size: 24pt;
+  padding-left: 30px;
+  padding-right: 25px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#shine1 {
+  display: none;
+  opacity: 0;
+  background-image: url(../images/Shine1.png);
+  position: absolute;
+  width: 171px;
+  height: 174px;
+  left: 890px;
+  top: 200px;
+}
+
+#shine2 {
+  display: none;
+  opacity: 0;
+  background-image: url(../images/Shine2.png);
+  position: absolute;
+  width: 135px;
+  height: 137px;
+  left: -45px;
+  top: 250px;
+}
+
+#shine3 {
+  display: none;
+  opacity: 0;
+  background-image: url(../images/Shine2.png);
+  position: absolute;
+  width: 135px;
+  height: 137px;
+  left: 500px;
+  top: -40px;
+}
